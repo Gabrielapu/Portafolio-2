@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+   .full-center {
+      @apply flex justify-center items-center;
+   }
+}
+
+@layer base {
+   @font-face {
+      font-family: 'Inter';
+      src: url('/src/assets/font/Inter-VariableFont_slnt\,wght.ttf');
+   }
+   h1 {
+      @apply text-2xl font-semibold;
+   }
+   h2 {
+      @apply text-base font-medium;
+   }
+}
+
+
+:root {
+   /* Estilos de vue-select*/
+   /* Search Input */
+   --vs-search-input-placeholder-color: rgb(148 163 184 / 1);
+   --vs-font-size: 1rem;
+   --vs-line-height: 2;
+   --vs-state-disabled-bg: rgb(248, 248, 248);
+   --vs-state-disabled-color: var(--vs-colors--light);
+   --vs-state-disabled-controls-color: var(--vs-colors--light);
+   --vs-state-disabled-cursor: not-allowed;
+   --vs-border-color: #E2E8F0;
+   --vs-selected-color: rgb(148 163 184 / 1);
+   --vs-dropdown-option-padding: 6px 20px;
+   --vs-dropdown-option--active-bg: #3A7BC8;
+
+
+   /* Estilos vue multiselect*/
+   /* https://github.com/vueform/multiselect */
+   --ms-ring-color: #fff;
+   --ms-spinner-color: #2563EB;
+   --ms-option-bg-selected: #2563EB;
+   --ms-option-bg-selected-pointed: #2563EB;
+   --ms-option-color-pointed: rgb(148 163 184 / 1);
+   --ms-bg-disabled: #F8FAFC;
+   --ms-border-color: #E2E8F0;
+}

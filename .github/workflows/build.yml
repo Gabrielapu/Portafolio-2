@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-webserver:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Build Image
+      run: docker build . --file ./docker/Dockerfile --tag notus/test
+
+

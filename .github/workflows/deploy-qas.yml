@@ -1,0 +1,44 @@
+name: Deploy QAS
+
+on:
+  push:
+    branches: [ "qas" ]
+
+env:
+  IMAGE_TAG: "ghcr.io/notus-git/soprole-costos-front:${{ github.sha }}"
+
+jobs:
+  build-webserver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Build and Publish
+        uses: ./.github/actions/build-publish-docker-image
+        with:
+          repository-owner: ${{ github.repository_owner }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          image-tag: ${{ env.IMAGE_TAG }}
+          dockerfile-path: ./docker/Dockerfile
+
+  deploy_develop:
+    needs: build-webserver
+    runs-on: ubuntu-latest
+    if: ${{ success()}}
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Deploy App
+      uses: ./.github/actions/deploy_eks
+      with:
+        role-to-assume: arn:aws:iam::883181947095:role/GithubActionsRole
+        aws-region: us-east-1
+        ks8-context: Production
+        image-tag: ${{ env.IMAGE_TAG }}
+        site-url: soprole-costos-qas.notus.cl
+        namespace: soprole-costos-qas
