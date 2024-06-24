@@ -5,7 +5,7 @@
       bg-white shadow-md max-w-sm w-[384px]"
     >
       <div class="form-header flex flex-col items-center">
-        <img src="../../assets/logo.png" class="max-h-8 mb-4" alt="logo" />
+        <!-- <img src="../../assets/logo.png" class="max-h-8 mb-4" alt="logo" /> -->
         <h1 class="text-center  text-company-secondary-variant">{{form.title}}</h1>
         <h2 class="text-center text-company-secondary">{{form.subtitle}}</h2>
       </div>

@@ -5,7 +5,7 @@
       h-screen overflow-auto shadow-md z-30 bg-white"
   >
     <div class="flex flex-col w-full px-4 pb-16 pt-7">
-      <img src="../../assets/logo.png" class="mb-10" alt="logo" />
+      <!-- <img src="../../assets/logo.png" class="mb-10" alt="logo" /> -->
       
       <div v-for="(item, i) in navItems" :key="i">
         <NavDrawerOption 
